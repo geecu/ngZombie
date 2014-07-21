@@ -1,0 +1,10 @@
+{
+  "name": "ngZombie",
+  "main": "ngZombie.js",
+  "version": "0.1.0",
+  "authors": [
+    "Gunther Konig <geecu.gee@gmail.com>"
+  ],
+  "description": "AngularJS dev helper module",
+  "license": "MIT"
+}

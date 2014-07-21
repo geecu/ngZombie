@@ -8,7 +8,10 @@
     var storagePrefix = 'ngzombie-';
     var storageEnabledKey = storagePrefix + 'enabled';
     var storageEnabled = storage.getItem(storageEnabledKey);
-    var enabledHooks = storageEnabled.split(',');
+    var enabledHooks = [];
+    if (storageEnabled && storageEnabled.length) {
+        enabledHooks = storageEnabled.split(',');
+    }
 
     var NgZombie = function() {
         this.afterCtrl = function(ctrlName, description, callback) {

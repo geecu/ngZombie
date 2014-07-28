@@ -86,10 +86,17 @@
         }];
     }
 
-    var panelTemplate = '<div id="ng-zombie-panel" style="position: absolute; top: 0; right: 0; background-color: #fff;z-index: 1000; padding: 3px;" '+
-        'ng-style="{\'opacity\': open ? 1 : .5}">'+
-        '<h4 style="cursor: pointer;" ng-click="open = !open">ngZombie</h4>'+
-        '<ul ng-style="{\'display\': open ? \'block\':\'none\'}" style="margin: 0; padding: 0">'+
+    var panelTemplate = '<style type="text/css">' +
+	'#ng-zombie-panel { position: absolute; top: 0; right: 0; background-color: #fff;z-index: 1000; padding: 3px; opacity: .5; }' +
+	'#ng-zombie-panel:hover { opacity: 1; }' +
+	'#ng-zombie-panel h4 { cursor: pointer; }' +
+	'#ng-zombie-panel ul { display: none; margin: 0; padding: 0; }' +
+	'#ng-zombie-panel.open ul { display: block; }' +
+	'#ng-zombie-panel.open label { display: inline-block; }' +
+	'</style>' +
+	'<div id="ng-zombie-panel" ng-class="{open: open}">'+
+        '<h4 ng-click="open = !open">ngZombie</h4>'+
+        '<ul>'+
             '<li ng-repeat="(type, hook) in hooks">'+
                 '{{type}}'+
                 '<ul>'+
@@ -98,7 +105,7 @@
                         '<ul>'+
                             '<li ng-repeat="definition in definitions">'+
                                 '<input type="checkbox" ng-model="definition.enabled" id="{{definition.id}}"> '+
-                                '<label for="{{definition.id}}" style="display: inline-block;">'+
+                                '<label for="{{definition.id}}">'+
                                     '{{definition.description}}'+
                                 '</label>'+
                             '</li>'+
